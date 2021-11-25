@@ -12,4 +12,5 @@
 # php artisan migrate
 # php artisan db seed
 # php artisan serve
+# run http://localhost:8000
 ```
