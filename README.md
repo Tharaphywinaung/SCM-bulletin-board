@@ -5,7 +5,7 @@
 
 ## Project Setup
 ```
-# git clone (https://pages.github.com/)
+# git clone (https://github.com/Tharaphywinaung/SCM-bulletin-board.git)
 # create database
 # database setup in (.env)file
 # composer install
