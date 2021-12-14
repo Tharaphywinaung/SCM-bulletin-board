@@ -41,7 +41,7 @@ class PostController extends Controller
     {
         $request->validate([
             'title'=>'required',
-            'description'=>'required',
+            'description'=>'required|max:10000',
         ]);
         $post = $this->postInterface->postConfirm($request);
         return view('post.create_post_confirm',compact('post'));
@@ -73,7 +73,6 @@ class PostController extends Controller
     {
         $request->validate([
             'title'=>'required',
-            'description'=>'required',
         ]);
         $post = $this->postInterface->postUpdateConfirm($request);
         return view('post.update_post_confirm',compact('post'));
