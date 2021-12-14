@@ -56,7 +56,11 @@
                       <p>Type : User</p>
                       @endif
                       <p>Phone : {{ $user->phone }}</p>
-                      <p>Date of birth : {{ $user->dob->format('d/m/Y') }}</p>
+                      <p>
+                      @if(!(empty($user->dob)))
+                          Date of Birth : {{ $user->dob->format('m/d/Y') }}
+                        @endif()
+                      </p>
                       <p>Address : {{ $user->address }}</p>
                     </div>
                     <div class="modal-footer">
@@ -69,7 +73,11 @@
             <td>{{ $user->email }}</td>
             <td>{{ $user->created_user->name }}</td>
             <td>{{ $user->phone }}</td>
-            <td>{{ $user->dob->format('m/d/Y') }}</td>
+            <td>
+            @if(!(empty($user->dob)))
+              {{ $user->dob->format('m/d/Y') }}
+            @endif()
+            </td>
             <td>{{ $user->address }}</td>
             <td>{{ $user->created_at->format('m/d/Y') }}</td>
             <td>
@@ -92,7 +100,11 @@
                       <p>Type : User</p>
                       @endif
                       <p>Phone : {{ $user->phone }}</p>
-                      <p>Date of birth : {{ $user->dob->format('d/m/Y') }}</p>
+                      <p>
+                        @if(!(empty($user->dob)))
+                          Date of Birth : {{ $user->dob->format('m/d/Y') }}
+                        @endif()
+                      </p>
                       <p>Address : {{ $user->address }}</p>
                     </div>
                     <div class="modal-footer">
