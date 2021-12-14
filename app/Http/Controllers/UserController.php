@@ -106,12 +106,6 @@ class UserController extends Controller
     //Show the confirm screen for editing the specified resource.
     public function updateConfirm(Request $request)
     {
-        $request->validate([
-            'name'=>'required',
-            'email'=>'required',
-            'type'=>'required',
-            'profile' => 'image|mimes:jpeg,png,jpg,gif,svg,PNG|max:2048',
-        ]);
         $users = $this->userInterface->userUpdateConfirm($request);
         return view('user.update_user_confirm',compact('users'));
     }

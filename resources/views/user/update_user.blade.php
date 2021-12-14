@@ -27,11 +27,17 @@
             </div>
             <div class="form-group">
               <label for="type" class="text-info"><span class="require-item">Required</span>Type:</label>
+              @if($users->type=='0')
               <select name="type" id="type" class="form-control">
-                <option value="">please choice</option>
-                <option value="0">Admin</option>
+                <option value="0" selected>Admin</option>
                 <option value="1">User</option>
               </select>
+              @else
+              <select name="type" id="type" class="form-control">
+                <option value="0">Admin</option>
+                <option value="1" selected>User</option>
+              </select>
+              @endif
               @error('type')
                 <p class="alert alert-danger">{{ $message }}</p>
               @enderror
@@ -52,7 +58,7 @@
             </div>
             <div class="form-group">
               <label for="profile" class="text-info">Profile:</label>
-              <input type="file" name="profile" onchange="previewFile(this);" required>
+              <input type="file" name="profile" onchange="previewFile(this);">
               <img id="previewImg" src="" alt="">
               @error('profile')
                 <p class="alert alert-danger">{{ $message }}</p>
@@ -70,7 +76,7 @@
             </p>
             <div class="text-right mt-5">
               <input type="submit" name="submit" class="btn btn-info" value="Confirm">
-              <a href="javascript:history.back()" type="button" class="btn btn-outline-info">cancel</a>
+              <a href="javascript:history.back()" type="button" class="btn btn-outline-info">Cancel</a>
             </div>
           </form>
         </div>
