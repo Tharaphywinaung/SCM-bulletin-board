@@ -24,7 +24,7 @@
             </div>
             <div class="text-right">
               <button type="submit" class="btn btn-info">Confirm</button>
-              <button type="reset" class="btn btn-outline-info">Clear</button>
+              <a href="javascript:history.back()" type="button" class="btn btn-outline-info">cancel</a>
             </div>
           </form>
         </div>
