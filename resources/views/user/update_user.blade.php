@@ -70,7 +70,7 @@
             </p>
             <div class="text-right mt-5">
               <input type="submit" name="submit" class="btn btn-info" value="Confirm">
-              <a href="{{ route('user.create') }}" class="btn btn-outline-info">Cancel</a>
+              <a href="javascript:history.back()" type="button" class="btn btn-outline-info">cancel</a>
             </div>
           </form>
         </div>
