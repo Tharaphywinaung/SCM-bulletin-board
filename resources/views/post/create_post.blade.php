@@ -9,14 +9,14 @@
             @csrf
             <div class="form-group">
               <label for="title" class="text-info"><span class="require-item">Required</span>Title</label><br>
-              <input type="text" name="title" class="form-control">
+              <input type="text" name="title" class="form-control" value="{{ old('title') }}">
               @error('title')
                 <p class="alert alert-danger">{{ $message }}</p>
               @enderror
             </div>
             <div class="form-group">
               <label for="description" class="text-info"><span class="require-item">Required</span>Description</label><br>
-              <textarea name="description" class="form-control"></textarea>
+              <textarea name="description" class="form-control">{{ old('description') }}</textarea>
               @error('description')
                 <p class="alert alert-danger">{{ $message }}</p>
               @enderror

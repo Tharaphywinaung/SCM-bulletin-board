@@ -9,14 +9,14 @@
             @csrf
             <div class="form-group">
               <label for="name" class="text-info"><span class="require-item">Required</span>Name:</label>
-              <input type="text" name="name" class="form-control">
+              <input type="text" name="name" class="form-control" value="{{ old('name') }}">
               @error('name')
                 <p class="alert alert-danger">{{ $message }}</p>
               @enderror
             </div>
             <div class="form-group">
               <label for="email" class="text-info"><span class="require-item">Required</span>Email Address:</label>
-              <input type="text" name="email" class="form-control">
+              <input type="text" name="email" class="form-control" value="{{ old('email') }}" }}>
               @error('email')
                 <p class="alert alert-danger">{{ $message }}</p>
               @enderror
@@ -48,20 +48,23 @@
             </div>
             <div class="form-group">
               <label for="phone" class="text-info">Phone:</label>
-              <input type="text" name="phone" class="form-control">
+              <input type="text" name="phone" class="form-control" value="{{ old('phone') }}">
             </div>
             <div class="form-group">
               <label for="dob" class="text-info">Date Of Birth:</label>
-              <input type="date" name="dob" class="form-control">
+              <input type="date" name="dob" class="form-control" data-date-format="YYYY/mm/dd">
             </div>
             <div class="form-group">
               <label for="address" class="text-info">Address:</label>
-              <textarea name="address" id="address" class="form-control"></textarea>
+              <textarea name="address" id="address" class="form-control">{{ old('address') }}</textarea>
             </div>
             <div class="form-group">
               <label for="profile" class="text-info">Profile:</label>
-              <input type="file" name="profile" onchange="previewFile(this);" required>
+              <input type="file" name="profile" onchange="previewFile(this);">
               <img id="previewImg" src="" alt="">
+              @error('profile')
+                <p class="alert alert-danger">{{ $message }}</p>
+              @enderror
             </div>
             <div class="text-right mt-5">
               <input type="submit" name="submit" class="btn btn-info" value="Confirm">
