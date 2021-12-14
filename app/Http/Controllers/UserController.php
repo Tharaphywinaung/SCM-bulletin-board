@@ -149,7 +149,7 @@ class UserController extends Controller
         $request->validate([
             'current_password' => ['required', new MatchOldPassword],
             'new_password' => ['required'],
-            'new_confirm_password' => ['same:new_password'],
+            'new_confirm_password' => ['same:new_password','required'],
         ]);
         $user = $this->userInterface->passwordChange($request);
         return redirect()->route('post.index');
