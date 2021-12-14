@@ -39,7 +39,7 @@
             </div>
             <div class="text-right mt-5">
               <input type="submit" name="submit" class="btn btn-info" value="Update">
-              <a href="javascript:history.back()" type="button" class="btn btn-outline-info">Cancel</a>
+              <a href="javascript:history.back()" type="button" class="btn btn-outline-info">back</a>
             </div>
           </form>
         </div>
