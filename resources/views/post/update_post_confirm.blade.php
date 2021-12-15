@@ -11,12 +11,16 @@
             <input type="hidden" name="id" value="{{ $post['id'] }}">
             <div class="form-group">
               <label for="title" class="text-info"><span class="require-item">Required</span>Title</label><br>
-              <input type="text" name="title" class="form-control" value="{{ $post['title'] }}">
+              <input type="hidden" name="title" class="form-control" value="{{ $post['title'] }}">
+              <p class="form-control">{{ $post['title'] }}</p>
             </div>
+            @if(!(empty($post['description'])))
             <div class="form-group">
               <label for="description" class="text-info"><span class="require-item">Required</span>Description</label><br>
-              <textarea name="description" class="form-control">{{ $post['description'] }}</textarea>
+              <textarea name="description" class="form-control" style="display:none">{{ $post['description'] }}</textarea>
+              <p class="form-control txt-area">{{ $post['description'] }}</p>
             </div>
+            @endif
             <div class="form-group">
               <label class="switch" for="status">
                 <input type="checkbox" name="status" checked value="{{ $post['status'] }}">
