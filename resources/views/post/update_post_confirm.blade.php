@@ -14,7 +14,7 @@
               <input type="text" name="title" class="form-control" value="{{ $post['title'] }}">
             </div>
             <div class="form-group">
-              <label for="description" class="text-info">Description</label><br>
+              <label for="description" class="text-info"><span class="require-item">Required</span>Description</label><br>
               <textarea name="description" class="form-control">{{ $post['description'] }}</textarea>
             </div>
             <div class="form-group">

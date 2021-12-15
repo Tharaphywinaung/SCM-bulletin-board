@@ -73,6 +73,7 @@ class PostController extends Controller
     {
         $request->validate([
             'title'=>'required',
+            'description'=>'required',
         ]);
         $post = $this->postInterface->postUpdateConfirm($request);
         return view('post.update_post_confirm',compact('post'));
