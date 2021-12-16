@@ -59,7 +59,7 @@
               <textarea name="address" id="address" class="form-control">{{ old('address') }}</textarea>
             </div>
             <div class="form-group">
-              <label for="profile" class="text-info">Profile:</label>
+              <label for="profile" class="text-info"><span class="require-item">Required</span>Profile:</label>
               <input type="file" name="profile" onchange="previewFile(this);">
               <img id="previewImg" src="" alt="">
               @error('profile')
