@@ -55,12 +55,6 @@ class PostController extends Controller
             ->with('success','Post Created Successfully');
     }
 
-    //Display the specified resource.
-    public function show($id)
-    {
-        
-    }
-
     //Show the form for editing the specified resource.
     public function edit($id)
     {

@@ -89,7 +89,7 @@ class PostDao implements PostDaoInterface
             $post = Post::with('user_id')->orWhereHas('user_id',function($query) use($key) {
                 $query->where('name',$key);
                 })->orWhere('title','LIKE','%'.$key.'%')
-                  ->orWhere('description','LIKE','%'.$key.'%')->paginate(10);
+                  ->orWhere('description','LIKE','%'.$key.'%')->paginate(5);
         }
         return $post;
     }
