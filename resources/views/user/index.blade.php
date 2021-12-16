@@ -13,8 +13,8 @@
         <form action="{{ route('user.user_search') }}" method="GET" class="search-form flex">
           <input type="text" name="name" class="ml-2" placeholder="Name" required>
           <input type="text" name="email" class="ml-2" placeholder="Email" >
-          <input type="date" name="created_from" class="ml-2" >
-          <input type="date" name="created_to" class="ml-2" >
+          <input type="date" name="created_from" class="ml-2" placeholder="Created From">
+          <input type="date" name="created_to" class="ml-2" placeholder="Created To">
           <button type="submit" class="btn btn-outline-info ml-2">Search</button>
         </form>
       </div>
