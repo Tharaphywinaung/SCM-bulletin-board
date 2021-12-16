@@ -30,6 +30,7 @@
             <th scope="col">Birth Date</th>
             <th scope="col">Address</th>
             <th scope="col">Created Date</th>
+            <th scope="col">Updated Date</th>
             <th scope="col" class="text-right"></th>
           </tr>
         </thead>
@@ -57,7 +58,7 @@
                       @endif
                       <p>Phone : {{ $user->phone }}</p>
                       <p>
-                      @if(!(empty($user->dob)))
+                        @if(!(empty($user->dob)))
                           Date of Birth : {{ $user->dob->format('m/d/Y') }}
                         @endif()
                       </p>
@@ -74,12 +75,13 @@
             <td>{{ $user->created_user->name }}</td>
             <td>{{ $user->phone }}</td>
             <td>
-            @if(!(empty($user->dob)))
-              {{ $user->dob->format('m/d/Y') }}
-            @endif()
+              @if(!(empty($user->dob)))
+                {{ $user->dob->format('m/d/Y') }}
+              @endif()
             </td>
             <td>{{ $user->address }}</td>
             <td>{{ $user->created_at->format('m/d/Y') }}</td>
+            <td>{{ $user->updated_at->format('m/d/Y') }}</td>
             <td>
             <a href="" data-toggle="modal" data-target="#deleteModal{{ $user->id }}" class="btn btn-danger btn-sm mb-1">Delete</a>
               <div class="modal fade" id="deleteModal{{ $user->id }}">
@@ -101,9 +103,9 @@
                       @endif
                       <p>Phone : {{ $user->phone }}</p>
                       <p>
-                        @if(!(empty($user->dob)))
-                          Date of Birth : {{ $user->dob->format('m/d/Y') }}
-                        @endif()
+                      @if(!(empty($user->dob)))
+                        Date of Birth : {{ $user->dob->format('m/d/Y') }}
+                      @endif()
                       </p>
                       <p>Address : {{ $user->address }}</p>
                     </div>
