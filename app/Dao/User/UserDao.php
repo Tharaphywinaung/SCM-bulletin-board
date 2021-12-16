@@ -101,8 +101,7 @@ class UserDao implements UserDaoInterface
         }
         $created_from = trim($request->get('created_from'));
         $created_to = trim($request->get('created_to'));
-        if ($created_from && $created_to)
-        {
+        if ($created_from && $created_to){
             $users = User::where('created_at','>=', $created_from)
                         ->where('created_at','<=', $created_to);
         } else if ($created_from){
