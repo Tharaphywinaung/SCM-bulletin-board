@@ -30,10 +30,12 @@
               <dt>Phone :</dt>
               <dd>{{ $user->phone }}</dd>
             </dl>
+            @if (!empty($user->dob))
             <dl>
               <dt>Date Of Birth :</dt>
               <dd>{{ $user->dob->format('d/m/Y') }}</dd>
             </dl>
+            @endif
             <dl>
               <dt>Address :</dt>
               <dd>{{ $user->address }}</dd>

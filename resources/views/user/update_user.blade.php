@@ -49,6 +49,7 @@
                 <p class="alert alert-danger">{{ $message }}</p>
               @enderror
             </div>
+            @if (!empty($user->dob))
             <div class="form-group">
               <label for="dob" class="text-info">Date Of Birth:</label>
               <input type="date" name="dob" class="form-control" value="{{ $users->dob->format('Y-m-d') }}">
@@ -56,6 +57,15 @@
                 <p class="alert alert-danger">{{ $message }}</p>
               @enderror
             </div>
+            @else
+            <div class="form-group">
+              <label for="dob" class="text-info">Date Of Birth:</label>
+              <input type="date" name="dob" class="form-control" value="">
+              @error('dob')
+                <p class="alert alert-danger">{{ $message }}</p>
+              @enderror
+            </div>
+            @endif
             <div class="form-group">
               <label for="profile" class="text-info">Profile:</label>
               <input type="file" name="profile" onchange="previewFile(this);">

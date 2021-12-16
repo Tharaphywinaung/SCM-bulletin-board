@@ -9,10 +9,12 @@
             @csrf
             <input type="hidden" name="create_user_id" value="{{ Auth::user()->id }}">
             <input type="hidden" name="updated_user_id" value="{{ Auth::user()->id }}">
+            @if (!empty($users['profile']))
             <div class="form-group profile-image flex-row-reverse">
               <img src="/image/{{ $users['profile'] }}" alt="{{ $users['profile'] }}" width="150">
               <input type="hidden" name="profile" value="{{ $users['profile'] }}">
             </div>
+            @endif
             <div class="form-group">
               <label for="name" class="text-info"><span class="require-item">Required</span>Name:</label>
               <input type="text" name="name" class="form-control" value="{{$users['name']}}">
@@ -47,7 +49,7 @@
             </div>
             <div class="text-right mt-5">
               <input type="submit" name="submit" class="btn btn-info" value="Create">
-              <a href="javascript:history.back()" type="button" class="btn btn-outline-info">cancel</a>
+              <a href="javascript:history.back()" type="button" class="btn btn-outline-info">Cancel</a>
             </div>
           </form>
         </div>
