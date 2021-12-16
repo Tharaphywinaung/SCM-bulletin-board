@@ -16,7 +16,7 @@
             </div>
             <div class="form-group">
               <label for="email" class="text-info"><span class="require-item">Required</span>Email Address:</label>
-              <input type="text" name="email" class="form-control" value="{{ old('email') }}" }}>
+              <input type="text" name="email" class="form-control" value="{{ old('email') }}">
               @error('email')
                 <p class="alert alert-danger">{{ $message }}</p>
               @enderror
@@ -59,7 +59,7 @@
               <textarea name="address" id="address" class="form-control">{{ old('address') }}</textarea>
             </div>
             <div class="form-group">
-              <label for="profile" class="text-info"><span class="require-item">Required</span>Profile:</label>
+              <label for="profile" class="text-info">Profile:</label>
               <input type="file" name="profile" onchange="previewFile(this);">
               <img id="previewImg" src="" alt="">
               @error('profile')

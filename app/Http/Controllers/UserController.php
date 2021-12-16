@@ -35,7 +35,7 @@ class UserController extends Controller
     public function customLogin(Request $request)
     {
         $request->validate([
-            'email' => 'required',
+            'email' => 'required|email|exists:users',
             'password' => 'required',
         ]);
    
@@ -72,11 +72,11 @@ class UserController extends Controller
     {
         $request->validate([
             'name'=>'required',
-            'email'=>'required',
-            'password'=>'required | min:6',
+            'email'=>'required|email',
+            'password'=>'required|min:6|regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\x])(?=.*[!$#%]).*$/',
             'confirm_password'=>'required|same:password',
             'type'=>'required',
-            'profile' => 'required|image|mimes:jpeg,png,jpg,gif,svg,PNG|max:2048',
+            'profile' => 'image|mimes:jpeg,png,jpg,gif,svg,PNG|max:2048',
         ]);
         $users = $this->userInterface->userConfirm($request);
         return view('user.create_user_confirm',compact('users'));
