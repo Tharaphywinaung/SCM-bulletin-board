@@ -12,6 +12,7 @@ class PostDao implements PostDaoInterface
     //Post list action
     public function getPostList($request)
     {
+        $posts = Post::latest()->paginate(5);
         $id = Auth::user()->id;
         $created_user_id = User::find($id);
         if ($created_user_id->type == '0')
@@ -85,10 +86,10 @@ class PostDao implements PostDaoInterface
             ->Where('description', 'like', "%{$key}%")
             ->get();
         }else{
-            $post = Post::query()
-            ->where('title', 'like', "%{$key}%")
-            ->orWhere('description', 'like', "%{$key}%")
-            ->get();
+            $post = Post::with('user_id')->orWhereHas('user_id',function($query) use($key) {
+                $query->where('name',$key);
+                })->orWhere('title','LIKE','%'.$key.'%')
+                  ->orWhere('description','LIKE','%'.$key.'%')->paginate(10);
         }
         return $post;
     }
