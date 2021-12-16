@@ -11,11 +11,11 @@
       </div>
       <div class="col-md-8 col-sm-8">
         <form action="{{ route('user.user_search') }}" method="GET" class="search-form flex">
-          <input type="text" name="name" class="ml-2" placeholder="Name" required>
-          <input type="text" name="email" class="ml-2" placeholder="Email" >
-          <input type="date" name="created_from" class="ml-2" placeholder="Created From">
-          <input type="date" name="created_to" class="ml-2" placeholder="Created To">
-          <button type="submit" class="btn btn-outline-info ml-2">Search</button>
+          <input type="text" name="name" class="ml-2 button-enable" placeholder="Name">
+          <input type="text" name="email" class="ml-2 button-enable" placeholder="Email" >
+          <input type="text" name="created_from" class="ml-2 button-enable" placeholder="Created From" onfocus="(this.type='date')" onblur="(this.type='text')">
+          <input type="text" name="created_to" class="ml-2 button-enable" placeholder="Created To" onfocus="(this.type='date')" onblur="(this.type='text')">
+          <button type="submit" class="btn btn-outline-info ml-2 disabled">Search</button>
         </form>
       </div>
     </div>
