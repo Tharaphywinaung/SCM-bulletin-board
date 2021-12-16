@@ -17,8 +17,8 @@
               <textarea name="description" class="form-control">{{ $post->description }}</textarea>
             </div>
             <div class="form-group">
-            <label class="switch" for="status">
-              <input type="checkbox" name="status" checked value="{{ $post->status }}">
+            <label class="switch">
+              <input type="checkbox" name="status" value="{{$post->status}}" {{ ($post->status=='1' ? 'checked' : '') }}>
               <span class="slider round"></span>
             </label>
             </div>

@@ -22,10 +22,17 @@
             </div>
             @endif
             <div class="form-group">
+              @if (!(empty($post['status'])))
               <label class="switch" for="status">
-                <input type="checkbox" name="status" checked value="{{ $post['status'] }}">
+                <input type="checkbox" name="status" value="{{ $post['status'] }}" {{ ($post["status"]=='1' ? 'checked' : '') }}>
                 <span class="slider round"></span>
               </label>
+              @else
+              <label class="switch" for="status">
+                <input type="checkbox" name="status" value = "">
+                <span class="slider round"></span>
+              </label>
+              @endif
             </div>
             <div class="text-right">
               <button type="submit" class="btn btn-info">Update</button>
