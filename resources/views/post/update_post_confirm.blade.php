@@ -8,6 +8,7 @@
           <form action="{{ route('post.update',$post['id']) }}" class="create-post" method="post">
             @csrf
             @method('PUT')
+            <input type="hidden" name="updated_user_id" value="{{ Auth::user()->id }}">
             <input type="hidden" name="id" value="{{ $post['id'] }}">
             <div class="form-group">
               <label for="title" class="text-info"><span class="require-item">Required</span>Title</label><br>

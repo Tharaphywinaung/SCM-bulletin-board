@@ -46,6 +46,12 @@
                     <div class="modal-body">
                       {{$post->description}}
                     </div>
+                    <div class="modal-body">
+                      <p>Posted User : {{$post->user_id->name }}</p>
+                      <p>Posted Date : {{$post->created_at->format('d/m/Y')}}</p>
+                      <p>Updated User : {{$post->update_user_id->name }}</p>
+                      <p>Updated Date : {{$post->updated_at->format('d/m/Y')}}</p>
+                    </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                     </div>
@@ -56,7 +62,7 @@
             <td>{{$post->description}}</td>
             <td>{{$post->user_id->name }}</td>
             <td>{{$post->created_at->format('d/m/Y')}}</td>
-            <td class="text-right">
+            <td>
               <a href="{{route('post.edit',$post->id)}}" class="btn btn-outline-info btn-sm mb-1">edit</a>
               <a href="" data-toggle="modal" data-target="#deleteModel{{$post->id}}" class="btn btn-danger btn-sm mb-1">Delete</a>
               <div class="modal fade" id="deleteModel{{$post->id}}">
@@ -66,8 +72,14 @@
                       <h4 class="modal-title">{{$post->title}}</h4>
                       <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
-                    <div class="modal-body text-left">
-                      <p>{{$post->description}}</p>
+                    <div class="modal-body">
+                      {{$post->description}}
+                    </div>
+                    <div class="modal-body">
+                      <p>Posted User : {{$post->user_id->name }}</p>
+                      <p>Posted Date : {{$post->created_at->format('d/m/Y')}}</p>
+                      <p>Updated User : {{$post->update_user_id->name }}</p>
+                      <p>Updated Date : {{$post->updated_at->format('d/m/Y')}}</p>
                     </div>
                     <div class="modal-footer">
                       <form action="{{ route('post.destroy', $post->id) }}" method="post">
