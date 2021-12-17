@@ -33,10 +33,8 @@
                 <option value="1">User</option>
               </select>
               @else
-              <select name="type" id="type" class="form-control">
-                <option value="0">Admin</option>
-                <option value="1" selected>User</option>
-              </select>
+              <input type="hidden" name="type" value="{{$users->type}}">
+              <p class="form-control">User</p>
               @endif
               @error('type')
                 <p class="alert alert-danger">{{ $message }}</p>

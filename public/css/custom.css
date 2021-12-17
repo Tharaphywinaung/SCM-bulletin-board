@@ -142,7 +142,8 @@ body {
 
 .create-user .form-group input,
 .create-user .form-group select,
-.create-user .form-group textarea {
+.create-user .form-group textarea,
+.create-user .form-group p.form-control {
   width: 65%;
 }
 
