@@ -40,7 +40,7 @@ class PostController extends Controller
     public function confirm(Request $request)
     {
         $request->validate([
-            'title'=>'required',
+            'title'=>'required|unique:posts',
             'description'=>'required|max:10000',
         ]);
         $post = $this->postInterface->postConfirm($request);
