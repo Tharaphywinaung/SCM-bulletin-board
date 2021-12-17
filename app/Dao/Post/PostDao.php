@@ -19,7 +19,7 @@ class PostDao implements PostDaoInterface
         {
             $posts = Post::latest()->paginate(5);
         } else {
-            $posts = Post::where('create_user_id','=',$id)->paginate(5);
+            $posts = Post::where('create_user_id','=',$id)->latest()->paginate(5);
         }
         return $posts;
     }
