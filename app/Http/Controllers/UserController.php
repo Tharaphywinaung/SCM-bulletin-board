@@ -44,7 +44,10 @@ class UserController extends Controller
             return redirect()->route('posts.index')
                         ->withSuccess('Signed in');
         }
-        return redirect("login")->withSuccess('Login details are not valid');
+        return redirect()->back()->withInput($request->only('email', 'remember'))->withErrors([
+            'password' => 'Wrong Password',
+            'approve' => 'Account not approved',
+        ]);
     }
 
     //User Logout

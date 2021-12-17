@@ -22,7 +22,7 @@
               <h3 class="text-center text-info">Login</h3>
               <div class="form-group">
                 <label for="email" class="text-info"><span class="require-item">Required</span>Email:</label><br>
-                <input type="text" name="email" class="form-control" placeholder="Type your email">
+                <input type="text" name="email" class="form-control" placeholder="Type your email" value="{{ old('email') }}">
                 @error('email')
                   <p class="alert alert-danger">{{ $message }}</p>
                 @enderror
@@ -30,7 +30,7 @@
               <div class="form-group">
                 <label for="password" class="text-info"><span class="require-item">Required</span>Password:</label><br>
                 <input type="password" name="password" class="form-control" placeholder="Type your password">
-                @error('email')
+                @error('password')
                   <p class="alert alert-danger">{{ $message }}</p>
                 @enderror
               </div>
