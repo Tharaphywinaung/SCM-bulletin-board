@@ -14,4 +14,6 @@ interface UserServiceInterface
     public function userUpdate($id, $request);
     public function userUpdateConfirm($request);
     public function passwordChange($request);
+    public function forgotPassword($request);
+    public function resetPassword($request);
 }

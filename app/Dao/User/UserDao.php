@@ -6,6 +6,10 @@ use App\Contracts\Dao\User\UserDaoInterface;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Auth;
+use DB;
+use Mail;
+use Illuminate\Support\Str;
+use Carbon\Carbon;
 
 class UserDao implements UserDaoInterface
 {
@@ -116,6 +120,35 @@ class UserDao implements UserDaoInterface
     public function passwordChange($request)
     {
         $user = User::find(auth()->user()->id)->update(['password'=> Hash::make($request->new_password)]);
+        return $user;
+    }
+
+    public function forgotPassword($request)
+    {
+        $token = Str::random(64);
+        $user = DB::table('password_resets')->insert([
+            'email' => $request->email, 
+            'token' => $token, 
+            'created_at' => Carbon::now()
+        ]);
+        Mail::send('email.forgetPassword', ['token' => $token], function($message) use($request){
+            $message->to($request->email);
+            $message->subject('Reset Password');
+        });
+        return $user;
+    }
+
+    public function resetPassword($request)
+    {
+        $updatePassword = DB::table('password_resets')->where([
+                        'email' => $request->email, 
+                        'token' => $request->token
+                    ])->first();
+        if(!$updatePassword){
+            return back()->withInput()->with('error', 'Invalid token!');
+        }
+        $user = User::where('email', $request->email)->update(['password' => Hash::make($request->password)]);
+        DB::table('password_resets')->where(['email'=> $request->email])->delete();
         return $user;
     }
 }
