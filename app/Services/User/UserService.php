@@ -7,7 +7,7 @@ use App\Contracts\Dao\User\UserDaoInterface;
 
 class UserService implements UserServiceInterface
 {
-    private $UserDao;
+    private $userDao;
 
     /**
      * Class Constructor

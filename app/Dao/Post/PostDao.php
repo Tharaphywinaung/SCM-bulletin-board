@@ -69,7 +69,6 @@ class PostDao implements PostDaoInterface
         $post = Post::find($id);
         $input = $request->all();
         $post->update($input);
-        $post->save();
         return $post;
     }
 

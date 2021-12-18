@@ -27,7 +27,7 @@ class UserDao implements UserDaoInterface
     }
 
     //User create confirm action
-    public function userconfirm($request)
+    public function userConfirm($request)
     {
         $user = $request->all();
         if ($profile = $request->file('profile'))
@@ -76,7 +76,6 @@ class UserDao implements UserDaoInterface
         $user = User::find($id);
         $input = $request->all();
         $user->update($input);
-        $user->save();
         return $user;
     }
 

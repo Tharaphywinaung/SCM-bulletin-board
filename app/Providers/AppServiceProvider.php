@@ -1,10 +1,7 @@
 <?php
 
 namespace App\Providers;
-
-use DB;
 use Illuminate\Support\ServiceProvider;
-use Log;
 class AppServiceProvider extends ServiceProvider
 {
     /**

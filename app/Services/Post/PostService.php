@@ -7,7 +7,7 @@ use App\Contracts\Dao\Post\PostDaoInterface;
 
 class PostService implements PostServiceInterface
 {
-    private $PostDao;
+    private $postDao;
 
     /**
      * Class Constructor
