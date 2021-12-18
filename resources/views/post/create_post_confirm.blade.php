@@ -11,15 +11,17 @@
             <input type="hidden" name="updated_user_id" value="{{ Auth::user()->id }}">
             <div class="form-group">
               <label for="title" class="text-info"><span class="require-item">Required</span>Title</label><br>
-              <input type="text" name="title" class="form-control" value="{{ $post['title'] }}">
+              <input type="hidden" name="title" class="form-control" value="{{ $post['title'] }}">
+              <p class="form-control">{{ $post['title'] }}</p>
             </div>
             <div class="form-group">
               <label for="description" class="text-info"><span class="require-item">Required</span>Description</label><br>
-              <textarea name="description" class="form-control">{{ $post['description'] }}</textarea>
+              <textarea name="description" class="form-control" style="display:none">{{ $post['description'] }}</textarea>
+              <p class="form-control">{{ $post['description'] }}</p>
             </div>
             <div class="text-right">
               <button type="submit" class="btn btn-info">Create</button>
-              <a href="javascript:history.back()" type="button" class="btn btn-outline-info">cancel</a>
+              <a href="javascript:history.back()" type="button" class="btn btn-outline-info">Cancel</a>
             </div>
           </form>
         </div>
