@@ -4,6 +4,7 @@ namespace App\Dao\User;
 
 use App\Contracts\Dao\User\UserDaoInterface;
 use App\Models\User;
+use App\Models\Post;
 use Illuminate\Support\Facades\Hash;
 use Auth;
 use DB;
@@ -27,6 +28,7 @@ class UserDao implements UserDaoInterface
         $user->deleted_user_id=Auth::user()->id;
         $user->save();
         $user->delete();
+        $post = Post::with('user_id')->where('create_user_id', $id)->delete();
         return $user;
     }
 
