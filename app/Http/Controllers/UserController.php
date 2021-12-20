@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validor;
 use Illuminate\Support\Facades\Input;
 use App\Contracts\Services\User\UserServiceInterface;
 use App\Rules\MatchOldPassword;
@@ -41,7 +40,7 @@ class UserController extends Controller
    
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
-            return redirect()->route('posts.index')
+            return redirect()->route('post.index')
                         ->withSuccess('Signed in');
         }
         return redirect()->back()->withInput($request->only('email', 'remember'))->withErrors([
@@ -54,7 +53,7 @@ class UserController extends Controller
     public function logOut() {
         Session::flush();
         Auth::logout();
-        return Redirect('login');
+        return Redirect('user/login');
     }
 
     //Display a listing of the resource.
@@ -131,7 +130,7 @@ class UserController extends Controller
     public function userSearch(Request $request)
     {
         $users = $this->userInterface->userSearch($request);
-        return view('user.search',compact('users'));
+        return view('user.index',compact('users'));
     }
 
     //Show password change screen

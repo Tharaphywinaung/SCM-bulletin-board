@@ -10,7 +10,7 @@
         <a href="{{ route('user.create') }}" class="btn btn-info">Add</a>
       </div>
       <div class="col-md-8 col-sm-8">
-        <form action="{{ route('user.user_search') }}" method="GET" class="search-form flex">
+        <form action="{{ route('user.userSearch') }}" method="GET" class="search-form flex">
           <input type="text" name="name" class="ml-2 button-enable" placeholder="Name">
           <input type="text" name="email" class="ml-2 button-enable" placeholder="Email" >
           <input type="text" name="created_from" class="ml-2 button-enable" placeholder="Created From" onfocus="(this.type='date')" onblur="(this.type='text')">
@@ -20,6 +20,7 @@
       </div>
     </div>
     <div class="table-responsive mt-3">
+    @if($users->isNotEmpty())
       <table class="table">
         <thead>
           <tr>
@@ -125,6 +126,11 @@
           @endforeach
         </tbody>
       </table>
+      @else
+        <div>
+        <h3 class="text-center mt-5">No item found</h3>
+        </div>
+      @endif
     </div>
     <div class="pagination">
       {!! $users->links() !!}

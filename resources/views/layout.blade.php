@@ -22,6 +22,7 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
+          @if (Auth::user())
           @if (Auth::user()->type == 0)
           <li class="nav-item active">
             <a href="{{ url('/users') }}">Users</a>
@@ -34,8 +35,13 @@
             <a href="{{route('user.show',Auth::user()->id)}}" class="user-name">{{ Auth::user()->name }}</a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('logout') }}" class="btn-logout">Logout</a>
+            <a href="{{ route('user.logout') }}" class="btn-logout">Logout</a>
           </li>
+          @else
+          <li class="nav-item">
+            <a href="{{ url('/user/login') }}" class="btn-logout">Login</a>
+          </li>
+          @endif
         </ul>
       </div>
     </nav>

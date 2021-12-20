@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validor;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Auth;
 use App\Contracts\Services\Post\PostServiceInterface;
@@ -51,7 +50,7 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $post = $this->postInterface->postCreate($request);
-        return redirect()->route('posts.index',compact('post'))
+        return redirect()->route('post.index',compact('post'))
             ->with('success','Post Created Successfully');
     }
 
@@ -77,20 +76,20 @@ class PostController extends Controller
     public function update(Request $request, $id)
     {
         $post = $this->postInterface->postUpdate($request, $id);
-        return redirect()->route('posts.index')->with('success','Post updated Successfully');
+        return redirect()->route('post.index')->with('success','Post updated Successfully');
     }
 
     //Remove the specified resource from storage.
     public function destroy($id)
     {
         $posts = $this->postInterface->postDelete($id);
-        return redirect()->route('posts.index')->with('success','Post Deleted Successfully');
+        return redirect()->route('post.index')->with('success','Post Deleted Successfully');
     }
 
     //Search the specified resource from storage.
     public function search(Request $request)
     {
         $posts = $this->postInterface->postSearch($request);
-        return view('post.search',compact('posts'));
+        return view('post.index',compact('posts'));
     }
 }

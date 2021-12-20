@@ -17,7 +17,7 @@
       <div id="login-row" class="row justify-content-center align-items-center">
         <div id="login-column" class="col-md-6">
           <div id="login-box" class="col-md-12">
-            <form id="login-form" class="form" action="{{ route('login.custom') }}" method="POST">
+            <form id="login-form" class="form" action="{{ route('user.customLogin') }}" method="POST">
               @csrf
               <h3 class="text-center text-info">Login</h3>
               <div class="form-group">
@@ -40,7 +40,7 @@
                   <span>Remember me</span> 
                 </label>
                 <div class="forget-password-link">
-                  <a href="{{ route('forget.password.get') }}" class="text-info">forgot password?</a>
+                  <a href="{{ route('forgotPassword.showForgetPasswordForm') }}" class="text-info">forgot password?</a>
                 </div>
               </div>
                 <input type="submit" name="submit" class="btn btn-info btn-block justify-content-center" value="Login">

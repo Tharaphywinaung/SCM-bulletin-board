@@ -13,13 +13,17 @@ class PostDao implements PostDaoInterface
     public function getPostList($request)
     {
         $posts = Post::latest()->paginate(5);
-        $id = Auth::user()->id;
-        $created_user_id = User::find($id);
-        if ($created_user_id->type == '0')
-        {
-            $posts = Post::latest()->paginate(5);
+        if(Auth::user()){
+            $id = Auth::user()->id;
+            $created_user_id = User::find($id);
+            if ($created_user_id->type == '0')
+            {
+                $posts = Post::latest()->paginate(5);
+            } else {
+                $posts = Post::where('create_user_id','=',$id)->latest()->paginate(5);
+            }
         } else {
-            $posts = Post::where('create_user_id','=',$id)->latest()->paginate(5);
+            $posts = Post::latest()->paginate(5);
         }
         return $posts;
     }
@@ -75,21 +79,11 @@ class PostDao implements PostDaoInterface
     //Post search action
     public function postSearch($request)
     {
-        $id = Auth::user()->id;
-        $created_user_id = User::find($id);
         $key = trim($request->get('search'));
-        if ($created_user_id->type == "1") {
-            $post = Post::query()
-            ->where('create_user_id','=',$id)
-            ->where('title', 'like', "%{$key}%")
-            ->Where('description', 'like', "%{$key}%")
-            ->get();
-        }else{
-            $post = Post::with('user_id')->orWhereHas('user_id',function($query) use($key) {
-                $query->where('name',$key);
-                })->orWhere('title','LIKE','%'.$key.'%')
-                  ->orWhere('description','LIKE','%'.$key.'%')->paginate(5);
-        }
+        $post = Post::with('user_id')->orWhereHas('user_id',function($query) use($key) {
+                $query->where('name',$key);})
+                ->orWhere('title','LIKE','%'.$key.'%')
+                ->orWhere('description','LIKE','%'.$key.'%')->orderBy('id','desc')->paginate(5);
         return $post;
     }
 }

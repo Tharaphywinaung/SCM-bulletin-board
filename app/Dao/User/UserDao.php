@@ -114,7 +114,7 @@ class UserDao implements UserDaoInterface
         } else if ($created_to) {
             $users = User::where('created_at','like',"%{$created_to}%");
         }
-        $users = $users->paginate(5);
+        $users = $users->orderBy('id','desc')->paginate(5);
         return $users;
     }
 

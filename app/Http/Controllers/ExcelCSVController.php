@@ -29,7 +29,7 @@ class ExcelCSVController extends Controller
            'file' => 'required',
         ]);
         Excel::import(new PostsImport,$request->file('file'));
-        return redirect()->route('posts.index')->with('status', 'The file has been excel/csv imported to database.');
+        return redirect()->route('post.index')->with('status', 'The file has been excel/csv imported to database.');
     }
  
     /**

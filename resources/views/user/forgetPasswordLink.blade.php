@@ -15,13 +15,13 @@
     <div class="row justify-content-center align-items-center">
       <div class="col-md-8">
         <div class="col-md-12">
-          <form class="mt-5 bg-light p-4 shadow" action="{{ route('reset.password.post') }}" method="post">
+          <form class="mt-5 bg-light p-4 shadow" action="{{ route('forgotPassword.submitResetPasswordForm') }}" method="post">
             <h3 class="text-center text-info">Reset Password</h3>
               @csrf
               <input type="hidden" name="token" value="{{ $token }}">
               <div class="form-group mt-3">
                 <label for="email_address" class="text-info"><span class="require-item">Required</span>E-Mail Address:</label>
-                <input type="text" class="form-control" name="email" required autofocus>
+                <input type="text" class="form-control" name="email" required autofocus value="{{old('email')}}">
                 @error('email')
                   <p class="alert alert-danger">{{ $errors->first('email') }}</p>
                 @enderror

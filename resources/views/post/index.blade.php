@@ -8,8 +8,10 @@
     <div class="row mt-5">
       <div class="col-md-6 col-sm-6">
         <div class="btn-group btn-group">
+        @if (Auth::user())
           <a href="{{ route('post.create') }}" class="btn btn-info">Add</a>
-          <a href="{{ route('csvUpload') }}" class="btn btn-secondary">Upload</a>
+          <a href="{{ route('excelCSVController.csvUpload') }}" class="btn btn-secondary">Upload</a>
+        @endif
           <a href="{{ url('export-excel-csv-file/csv')}}" class="btn btn-info">Download</a>
         </div>
       </div>
@@ -21,6 +23,7 @@
       </div>
     </div>
     <div class="table-responsive mt-3">
+    @if($posts->isNotEmpty())
       <table class="table">
         <thead>
           <tr>
@@ -28,7 +31,9 @@
             <th scope="col">Post Description</th>
             <th scope="col">Posted User</th>
             <th scope="col">Posted Date</th>
+            @if (Auth::user())
             <th scope="col" class="text-right"></th>
+            @endif
           </tr>
         </thead>
         <tbody>
@@ -62,6 +67,7 @@
             <td>{{$post->description}}</td>
             <td>{{$post->user_id->name }}</td>
             <td>{{$post->created_at->format('d/m/Y')}}</td>
+            @if (Auth::user())
             <td>
               <a href="{{route('post.edit',$post->id)}}" class="btn btn-outline-info btn-sm mb-1">edit</a>
               <a href="" data-toggle="modal" data-target="#deleteModel{{$post->id}}" class="btn btn-danger btn-sm mb-1">Delete</a>
@@ -93,10 +99,16 @@
                 </div>
               </div>
             </td>
+            @endif
           </tr>
           @endforeach
         </tbody>
       </table>
+      @else
+        <div>
+          <h3 class="text-center mt-5">{{ request()->get('search') }} : No item found</h3>
+        </div>
+      @endif
     </div>
     <div class="pagination">
     {{ $posts->links() }}

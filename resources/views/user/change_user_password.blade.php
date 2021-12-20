@@ -5,7 +5,7 @@
       <div class="col-md-8">
         <div class="col-md-12">
           <h3 class="text-center text-info">Change Password</h3>
-          <form class="mt-5 bg-light p-4" action="{{ route('user.passwordChange') }}" method="post">
+          <form class="mt-5 bg-light p-4" action="{{ route('user.password') }}" method="post">
             @csrf
             <div class="form-group">
               <label for="password" class="text-info"><span class="require-item">Required</span>Current Password:</label>

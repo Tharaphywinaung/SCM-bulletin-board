@@ -20,7 +20,7 @@
               {{ Session::get('message') }}
             </div>
            @endif
-          <form class="mt-5 bg-light p-4 shadow" action="{{ route('forget.password.post') }}" method="post">
+          <form class="mt-5 bg-light p-4 shadow" action="{{ route('forgotPassword.submitForgetPasswordForm') }}" method="post">
           <h3 class="text-center text-info">Reset Password</h3>
             @csrf
             <div class="form-group mt-3">
