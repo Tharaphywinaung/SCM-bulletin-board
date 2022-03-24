@@ -1,5 +1,5 @@
-# SCM-bulletin-board
-- Laravel OJT project
+# bulletin-board
+- Laravel project
 - contains CRUD operations related to the users and posts
 - CSV/Excel file upload and reset password action
 
